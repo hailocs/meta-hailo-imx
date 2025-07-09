@@ -3,15 +3,15 @@
 </p>
 
 
-# Meta-Hailo #
+# Meta-Hailo-i.MX #
 
-Hailo’s Yocto layers allow the user to integrate Hailo’s software into an existing Yocto environment. They include recipes
+This repository is intented to be used to add Hailo support to i.MX8 platforms only.
+Hailo’s Yocto layers allow the user to integrate Hailo’s software into an existing Yocto environment for i.MX8 platforms. They include recipes
 for:
 - [**HailoRT library**](https://github.com/hailo-ai/hailort)
 - [**HailoRT drivers**](https://github.com/hailo-ai/hailort-drivers)
 - Firmware for Hailo devices
     - Hailo-8
-    - Hailo-15
 - pyHailoRT - HailoRT Python API (wraps the run-time library)
 - HailoRT GStreamer library implementing the HailoNet element
 - Hailo [**TAPPAS**](https://github.com/hailo-ai/tappas) - framework for optimized execution of video-processing pipelines
