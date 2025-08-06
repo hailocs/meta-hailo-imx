@@ -111,6 +111,10 @@ fakeroot install_app_dir() {
         install -d ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}/resources/configs
         install -m 0755 ${ARM_APPS_DIR}/${CURRENT_APP_NAME}/configs/* ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}/resources/configs
     fi
+    if [ -d "${ARM_APPS_DIR}/${CURRENT_APP_NAME}/platforms" ]; then
+        install -d ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}/platforms
+        install -m 0755 ${ARM_APPS_DIR}/${CURRENT_APP_NAME}/platforms/* ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}/platforms
+    fi
     if [ "${CURRENT_APP_NAME}" = "face_recognition" ]; then
         copy_face_recognition_dirs
     fi
