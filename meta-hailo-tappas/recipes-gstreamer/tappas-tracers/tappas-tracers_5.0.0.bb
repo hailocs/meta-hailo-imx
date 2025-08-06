@@ -1,12 +1,12 @@
 DESCRIPTION = "tappas-tracers GStreamer plugin \
-               compiles the tappas libgsttracer gstreamer plugin \ 
+               compiles the tappas libgsttracer gstreamer plugin \
                and copies it to usr/lib/gstreamer-1.0 (gstreamer's plugins directory) "
-               
+
 LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM += "file://../../LICENSE;md5=4fbd65380cdd255951079008b364516c"
 
-SRC_URI = "git://github.com/hailocs/tappas-imx.git;protocol=https;branch=dev-improve-apps"
-SRCREV = "fbf3d10799d9322329aafb0061619f4da89df7e7"
+SRC_URI = "git://github.com/hailocs/tappas-imx.git;protocol=https;branch=dev-tappas-5.0"
+SRCREV = "871fc4bc71f0eb86f511123f4b8866e816b817ac"
 
 inherit hailotools-base
 
