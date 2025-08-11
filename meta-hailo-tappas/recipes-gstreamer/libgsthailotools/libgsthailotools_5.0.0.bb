@@ -6,13 +6,13 @@ LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM += "file://../../LICENSE;md5=4fbd65380cdd255951079008b364516c"
 
 SRC_URI = "git://github.com/hailocs/tappas-imx.git;protocol=https;branch=master"
-SRCREV = "15dc407f12b163c38c1bab8305f09927b7a77817"
+SRCREV = "26556fb603b899d2bddea13b6d186b64bb2be392"
 
 inherit hailotools-base
 
 do_install:append() {
     rm -f ${D}/${libdir}/gstreamer-1.0/libgsthailotools.so
-    find ${D}/${libdir}/gstreamer-1.0/ -name 'libgsthailotools.so.[0-9]' -delete
+    rm -f ${D}/${libdir}/gstreamer-1.0/libgsthailotools.so.[0-9]
     mv -f ${D}/${libdir}/gstreamer-1.0/libgsthailotools.so.${PV} ${D}/${libdir}/gstreamer-1.0/libgsthailotools.so
 }
 
@@ -30,5 +30,3 @@ FILES:${PN}-lib += "${libdir}/libgsthailometa.so.${PV} ${libdir}/libhailo_tracke
 RDEPENDS:${PN}-staticdev = ""
 RDEPENDS:${PN}-dev = ""
 RDEPENDS:${PN}-dbg = ""
-
-DEPENDS:append:hailo15 = " libgstmedialib "

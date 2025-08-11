@@ -7,7 +7,7 @@ SRC_URI = "git://github.com/hailocs/tappas-imx.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git/core/hailo"
 
-SRCREV = "15dc407f12b163c38c1bab8305f09927b7a77817"
+SRCREV = "26556fb603b899d2bddea13b6d186b64bb2be392"
 LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM += "file://../../LICENSE;md5=4fbd65380cdd255951079008b364516c"
 
@@ -110,6 +110,10 @@ fakeroot install_app_dir() {
     if [ -d "${ARM_APPS_DIR}/${CURRENT_APP_NAME}/configs" ]; then
         install -d ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}/resources/configs
         install -m 0755 ${ARM_APPS_DIR}/${CURRENT_APP_NAME}/configs/* ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}/resources/configs
+    fi
+    if [ -d "${ARM_APPS_DIR}/${CURRENT_APP_NAME}/platforms" ]; then
+        install -d ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}/platforms
+        install -m 0755 ${ARM_APPS_DIR}/${CURRENT_APP_NAME}/platforms/* ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}/platforms
     fi
     if [ "${CURRENT_APP_NAME}" = "face_recognition" ]; then
         copy_face_recognition_dirs

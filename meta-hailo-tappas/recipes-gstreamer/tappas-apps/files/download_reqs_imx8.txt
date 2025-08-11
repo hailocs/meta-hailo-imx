@@ -1,7 +1,8 @@
 https://hailo-csdata.s3.eu-west-2.amazonaws.com/resources/imx8/yolov5m_wo_spp_yuy2.hef -> apps/h8/gstreamer/imx8/detection -> 34ee95d8bd844921003e25f9c44a988c
+https://hailo-csdata.s3.eu-west-2.amazonaws.com/resources/imx8/media/detection.mp4 -> apps/h8/gstreamer/imx8/detection -> 91e47e4dc9822d9e643889bd1c7c8dff
 https://hailo-csdata.s3.eu-west-2.amazonaws.com/resources/imx8/yolov5m_vehicles_yuy2.hef -> apps/h8/gstreamer/imx8/license_plate_recognition -> 257cc04c186a8cf4751261d9d428ee28
 https://hailo-csdata.s3.eu-west-2.amazonaws.com/resources/imx8/yolov8n_license_plates_yuy2.hef -> apps/h8/gstreamer/imx8/license_plate_recognition -> 8a916fbcd2bc9b370248b9425e21dd20
-https://hailo-tappas.s3.eu-west-2.amazonaws.com/v3.30/imx8/media/lpr.raw -> apps/h8/gstreamer/imx8/license_plate_recognition -> 5f2217b90b4bb4e405f7323038840786
+https://hailo-csdata.s3.eu-west-2.amazonaws.com/resources/imx8/media/lpr.mp4 -> apps/h8/gstreamer/imx8/license_plate_recognition -> 79c571d20631b524da7f8269ce5ea513
 https://hailo-csdata.s3.eu-west-2.amazonaws.com/resources/imx8/lprnet_yuy2.hef -> apps/h8/gstreamer/imx8/license_plate_recognition -> ec23e3f52236e1c0e062a0f1ad6d8ae1
 https://hailo-tappas.s3.eu-west-2.amazonaws.com/v3.30/general/hefs/yolov5s_personface_nv12.hef -> apps/h8/gstreamer/imx8/multistream_detection -> 2f5ef95b7d02ca458929f4d2cbefb869
 https://hailo-tappas.s3.eu-west-2.amazonaws.com/v3.30/imx8/media/multistream_detection_h265/detection0.mp4 -> apps/h8/gstreamer/imx8/multistream_detection -> 1bcc3ff8e9340d27be080c56d9baff67
