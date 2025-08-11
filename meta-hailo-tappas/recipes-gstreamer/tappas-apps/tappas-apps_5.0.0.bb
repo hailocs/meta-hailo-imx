@@ -7,7 +7,7 @@ SRC_URI = "git://github.com/hailocs/tappas-imx.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git/core/hailo"
 
-SRCREV = "26556fb603b899d2bddea13b6d186b64bb2be392"
+SRCREV = "06ed7bc5a825eb25b1ce351c21451513e548c168"
 LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM += "file://../../LICENSE;md5=4fbd65380cdd255951079008b364516c"
 
