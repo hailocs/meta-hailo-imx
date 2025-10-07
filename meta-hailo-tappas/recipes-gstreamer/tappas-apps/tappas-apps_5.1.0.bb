@@ -7,7 +7,7 @@ SRC_URI = "git://github.com/hailocs/tappas-imx.git;protocol=https;branch=misc-ad
 
 S = "${WORKDIR}/git/core/hailo"
 
-SRCREV = "4c472796b2c8f3b7922860b2b9b52813a76a56ee"
+SRCREV = "a0e37f0e725bdb713a505b93e264f7a4db78c963"
 LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM += "file://../../LICENSE;md5=4fbd65380cdd255951079008b364516c"
 
@@ -87,6 +87,24 @@ copy_face_recognition_dirs() {
     fi
 }
 
+copy_webserver_dirs() {
+    SRC_DIR="${WORKDIR}/scripts"
+    DST_DIR="${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}/scripts"
+    if [ -d "$SRC_DIR" ]; then
+        install -d "$DST_DIR"
+        cp -r "$SRC_DIR/." "$DST_DIR/"
+        find "$DST_DIR" -exec chown root:root {} +
+    fi
+
+    SRC_DIR="${WORKDIR}/setup"
+    DST_DIR="${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}/setup"
+    if [ -d "$SRC_DIR" ]; then
+        install -d "$DST_DIR"
+        cp -r "$SRC_DIR/." "$DST_DIR/"
+        find "$DST_DIR" -exec chown root:root {} +
+    fi
+}
+
 fakeroot install_app_dir() {
     # install app path on the rootfs
     install -d ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}
@@ -117,6 +135,9 @@ fakeroot install_app_dir() {
     fi
     if [ "${CURRENT_APP_NAME}" = "face_recognition" ]; then
         copy_face_recognition_dirs
+    fi
+    if [ "${CURRENT_APP_NAME}" = "demo_webserver" ]; then
+        copy_webserver_dirs
     fi
 }
 
