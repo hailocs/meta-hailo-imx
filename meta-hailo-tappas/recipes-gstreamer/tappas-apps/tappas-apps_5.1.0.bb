@@ -88,7 +88,9 @@ copy_face_recognition_dirs() {
 }
 
 copy_webserver_dirs() {
-    SRC_DIR="${WORKDIR}/scripts"
+    install -m 0755 ${ARM_APPS_DIR}/${CURRENT_APP_NAME}/*.py ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}
+
+    SRC_DIR="${ARM_APPS_DIR}/${CURRENT_APP_NAME}/scripts"
     DST_DIR="${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}/scripts"
     if [ -d "$SRC_DIR" ]; then
         install -d "$DST_DIR"
@@ -96,7 +98,7 @@ copy_webserver_dirs() {
         find "$DST_DIR" -exec chown root:root {} +
     fi
 
-    SRC_DIR="${WORKDIR}/setup"
+    SRC_DIR="${ARM_APPS_DIR}/${CURRENT_APP_NAME}/setup"
     DST_DIR="${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}/setup"
     if [ -d "$SRC_DIR" ]; then
         install -d "$DST_DIR"
@@ -136,10 +138,14 @@ fakeroot install_app_dir() {
     if [ "${CURRENT_APP_NAME}" = "face_recognition" ]; then
         copy_face_recognition_dirs
     fi
-    if [ "${CURRENT_APP_NAME}" = "demo_webserver" ]; then
-        copy_webserver_dirs
-    fi
 }
+
+fakeroot install_webserver_dir() {
+    # install webserver on rootfs
+    install -d ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}
+    copy_webserver_dirs
+}
+
 
 do_install:append() {
     # Meson installs shared objects in apps target,
@@ -184,6 +190,9 @@ fakeroot python do_install_requirements() {
             d.setVar('CURRENT_APP_NAME', app_name)
             d.setVar('CURRENT_REQ_FILE', req_file)
             bb.build.exec_func('install_app_dir', d)
+
+    d.setVar('CURRENT_APP_NAME', 'demo_webserver')
+    bb.build.exec_func('install_webserver_dir', d)
 }
 
 
@@ -192,3 +201,4 @@ FILES:${PN}-lib += "/usr/lib/${OPENCV_UTIL}.${PV} /usr/lib/${GST_IMAGES_UTIL}.${
 RDEPENDS:${PN}-staticdev = ""
 RDEPENDS:${PN}-dev = ""
 RDEPENDS:${PN}-dbg = ""
+
