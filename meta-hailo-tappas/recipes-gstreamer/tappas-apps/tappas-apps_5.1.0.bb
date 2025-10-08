@@ -7,7 +7,7 @@ SRC_URI = "git://github.com/hailocs/tappas-imx.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git/core/hailo"
 
-SRCREV = "06ed7bc5a825eb25b1ce351c21451513e548c168"
+SRCREV = "41a239dccf4da4202c9de28ddb757d73f1cf3bd8"
 LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM += "file://../../LICENSE;md5=4fbd65380cdd255951079008b364516c"
 
@@ -87,6 +87,26 @@ copy_face_recognition_dirs() {
     fi
 }
 
+copy_webserver_dirs() {
+    install -m 0755 ${ARM_APPS_DIR}/${CURRENT_APP_NAME}/*.py ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}
+
+    SRC_DIR="${ARM_APPS_DIR}/${CURRENT_APP_NAME}/scripts"
+    DST_DIR="${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}/scripts"
+    if [ -d "$SRC_DIR" ]; then
+        install -d "$DST_DIR"
+        cp -r "$SRC_DIR/." "$DST_DIR/"
+        find "$DST_DIR" -exec chown root:root {} +
+    fi
+
+    SRC_DIR="${ARM_APPS_DIR}/${CURRENT_APP_NAME}/setup"
+    DST_DIR="${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}/setup"
+    if [ -d "$SRC_DIR" ]; then
+        install -d "$DST_DIR"
+        cp -r "$SRC_DIR/." "$DST_DIR/"
+        find "$DST_DIR" -exec chown root:root {} +
+    fi
+}
+
 fakeroot install_app_dir() {
     # install app path on the rootfs
     install -d ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}
@@ -119,6 +139,13 @@ fakeroot install_app_dir() {
         copy_face_recognition_dirs
     fi
 }
+
+fakeroot install_webserver_dir() {
+    # install webserver on rootfs
+    install -d ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}
+    copy_webserver_dirs
+}
+
 
 do_install:append() {
     # Meson installs shared objects in apps target,
@@ -163,6 +190,9 @@ fakeroot python do_install_requirements() {
             d.setVar('CURRENT_APP_NAME', app_name)
             d.setVar('CURRENT_REQ_FILE', req_file)
             bb.build.exec_func('install_app_dir', d)
+
+    d.setVar('CURRENT_APP_NAME', 'demo_webserver')
+    bb.build.exec_func('install_webserver_dir', d)
 }
 
 
@@ -171,3 +201,4 @@ FILES:${PN}-lib += "/usr/lib/${OPENCV_UTIL}.${PV} /usr/lib/${GST_IMAGES_UTIL}.${
 RDEPENDS:${PN}-staticdev = ""
 RDEPENDS:${PN}-dev = ""
 RDEPENDS:${PN}-dbg = ""
+
