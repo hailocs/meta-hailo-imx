@@ -33,7 +33,7 @@ do_install:append() {
 
   install -d ${HAILORT_EXPORT_DIR}
   install -m 0644 ${WORKDIR}/build/hailort/libhailort/src/*.cmake ${HAILORT_EXPORT_DIR}
-  install -m 0644 ${WORKDIR}/build/hailort/libhailort/src/CMakeFiles/Export/lib/cmake/HailoRT/*.cmake ${HAILORT_EXPORT_DIR}
+  install -m 0644 ${WORKDIR}/build/hailort/libhailort/src/CMakeFiles/Export/*/*.cmake ${HAILORT_EXPORT_DIR}
 
 }
 

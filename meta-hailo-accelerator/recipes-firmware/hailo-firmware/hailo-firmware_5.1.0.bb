@@ -10,24 +10,24 @@ SRC_URI = "https://hailo-csdata.s3.eu-west-2.amazonaws.com/resources/firmware/ha
 SRC_URI[md5sum] = "634610c3d4499fc0729514b6f3410718"
 
 
-S = "${WORKDIR}/"
+S = "${WORKDIR}"
 
 do_unpack[depends] += "unzip-native:do_populate_sysroot"
 
 do_install() {
-    install -d ${D}/lib/firmware/hailo/hailo10h
-    install -m 0644 ${S}/customer_certificate.bin ${D}/lib/firmware/hailo/hailo10h/
-    install -m 0644 ${S}/fitImage ${D}/lib/firmware/hailo/hailo10h/
-    install -m 0644 ${S}/image-fs ${D}/lib/firmware/hailo/hailo10h/
-    install -m 0644 ${S}/scu_fw.bin ${D}/lib/firmware/hailo/hailo10h/
-    install -m 0644 ${S}/u-boot-0.dtb.signed ${D}/lib/firmware/hailo/hailo10h/
-    install -m 0644 ${S}/u-boot-1.dtb.signed ${D}/lib/firmware/hailo/hailo10h/
-    install -m 0644 ${S}/u-boot-3.dtb.signed ${D}/lib/firmware/hailo/hailo10h/
-    install -m 0644 ${S}/u-boot-4.dtb.signed ${D}/lib/firmware/hailo/hailo10h/
-    install -m 0644 ${S}/u-boot-5.dtb.signed ${D}/lib/firmware/hailo/hailo10h/
-    install -m 0644 ${S}/u-boot-6.dtb.signed ${D}/lib/firmware/hailo/hailo10h/
-    install -m 0644 ${S}/u-boot-default.dtb.signed ${D}/lib/firmware/hailo/hailo10h/
-    install -m 0644 ${S}/u-boot-spl.bin ${D}/lib/firmware/hailo/hailo10h/
+    install -d ${D}/usr/lib/firmware/hailo/hailo10h
+    install -m 0644 ${S}/customer_certificate.bin ${D}/usr/lib/firmware/hailo/hailo10h/
+    install -m 0644 ${S}/fitImage ${D}/usr/lib/firmware/hailo/hailo10h/
+    install -m 0644 ${S}/image-fs ${D}/usr/lib/firmware/hailo/hailo10h/
+    install -m 0644 ${S}/scu_fw.bin ${D}/usr/lib/firmware/hailo/hailo10h/
+    install -m 0644 ${S}/u-boot-0.dtb.signed ${D}/usr/lib/firmware/hailo/hailo10h/
+    install -m 0644 ${S}/u-boot-1.dtb.signed ${D}/usr/lib/firmware/hailo/hailo10h/
+    install -m 0644 ${S}/u-boot-3.dtb.signed ${D}/usr/lib/firmware/hailo/hailo10h/
+    install -m 0644 ${S}/u-boot-4.dtb.signed ${D}/usr/lib/firmware/hailo/hailo10h/
+    install -m 0644 ${S}/u-boot-5.dtb.signed ${D}/usr/lib/firmware/hailo/hailo10h/
+    install -m 0644 ${S}/u-boot-6.dtb.signed ${D}/usr/lib/firmware/hailo/hailo10h/
+    install -m 0644 ${S}/u-boot-default.dtb.signed ${D}/usr/lib/firmware/hailo/hailo10h/
+    install -m 0644 ${S}/u-boot-spl.bin ${D}/usr/lib/firmware/hailo/hailo10h/
 }
 
-FILES_${PN} += "/lib/firmware/hailo/"
+FILES:${PN} += "/usr/lib/firmware/hailo/"
