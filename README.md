@@ -5,8 +5,8 @@
 
 # Meta-Hailo-i.MX #
 
-This repository is intented to be used to add Hailo support to i.MX8MP platforms only.
-Hailo’s Yocto layers allow the user to integrate Hailo’s software into an existing Yocto environment for i.MX8 platforms. They include recipes
+This repository is intented to be used to add Hailo support to i.MX8M Plus platforms only.
+Hailo’s Yocto layers allow the user to integrate Hailo’s software into an existing Yocto environment for i.MX8M Plus platforms. They include recipes
 for:
 - [**HailoRT library**](https://github.com/hailo-ai/hailort)
 - [**HailoRT drivers**](https://github.com/hailo-ai/hailort-drivers)
