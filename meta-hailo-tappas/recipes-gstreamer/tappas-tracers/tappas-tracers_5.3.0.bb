@@ -6,7 +6,7 @@ LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM += "file://../../LICENSE;md5=4fbd65380cdd255951079008b364516c"
 
 SRC_URI = "git://github.com/hailocs/tappas-imx.git;protocol=https;branch=master"
-SRCREV = "ad5d30923ac1320749a51b2887c5eeb243a51c7b"
+SRCREV = "1bbf4a4067c2ec1899d412a7e0541b1fb7d5e24a"
 
 inherit hailotools-base
 
@@ -20,9 +20,6 @@ do_install:append() {
     rm -f ${D}/${libdir}/gstreamer-1.0/libgsthailotracers.so
     find ${D}/${libdir}/gstreamer-1.0/ -name 'libgsthailotracers.so.[0-9]' -delete
     mv -f ${D}/${libdir}/gstreamer-1.0/libgsthailotracers.so.${PV} ${D}/${libdir}/gstreamer-1.0/libgsthailotracers.so
-
-    # Remove opencv utils - owned by libgsthailotools
-    rm -f ${D}/${libdir}/libhailo_opencv_utils.so*
 }
 
 

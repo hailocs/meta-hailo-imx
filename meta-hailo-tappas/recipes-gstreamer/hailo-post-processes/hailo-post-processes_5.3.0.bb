@@ -6,7 +6,7 @@ LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM += "file://../../LICENSE;md5=4fbd65380cdd255951079008b364516c"
 
 SRC_URI = "git://github.com/hailocs/tappas-imx.git;protocol=https;branch=master"
-SRCREV = "ad5d30923ac1320749a51b2887c5eeb243a51c7b"
+SRCREV = "1bbf4a4067c2ec1899d412a7e0541b1fb7d5e24a"
 
 inherit hailotools-base
 
@@ -30,9 +30,6 @@ do_install:append() {
     # Meson installs shared objects in apps target,
     # we remove it from the rootfs to prevent duplication with libgsthailotools
     rm -rf ${D}/usr/lib/libhailo_tracker*
-    # These are owned by libgsthailotools — remove to prevent dpkg file conflict
-    rm -f ${D}/${libdir}/libgsthailometa.so*
-    rm -f ${D}/${libdir}/libhailo_opencv_utils.so*
 }
 
 FILES:${PN} += "${libdir}/hailo-post-processes/* ${ROOTFS_POST_PROCESSES_DIR}/* ${ROOTFS_POST_PROCESSES_DIR}/so.* \
