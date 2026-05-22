@@ -30,6 +30,9 @@ do_install:append() {
     # Meson installs shared objects in apps target,
     # we remove it from the rootfs to prevent duplication with libgsthailotools
     rm -rf ${D}/usr/lib/libhailo_tracker*
+    # These are owned by libgsthailotools — remove to prevent dpkg file conflict
+    rm -f ${D}/${libdir}/libgsthailometa.so*
+    rm -f ${D}/${libdir}/libhailo_opencv_utils.so*
 }
 
 FILES:${PN} += "${libdir}/hailo-post-processes/* ${ROOTFS_POST_PROCESSES_DIR}/* ${ROOTFS_POST_PROCESSES_DIR}/so.* \

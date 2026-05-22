@@ -20,6 +20,9 @@ do_install:append() {
     rm -f ${D}/${libdir}/gstreamer-1.0/libgsthailotracers.so
     find ${D}/${libdir}/gstreamer-1.0/ -name 'libgsthailotracers.so.[0-9]' -delete
     mv -f ${D}/${libdir}/gstreamer-1.0/libgsthailotracers.so.${PV} ${D}/${libdir}/gstreamer-1.0/libgsthailotracers.so
+
+    # Remove opencv utils - owned by libgsthailotools
+    rm -f ${D}/${libdir}/libhailo_opencv_utils.so*
 }
 
 

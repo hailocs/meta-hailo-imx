@@ -147,6 +147,7 @@ do_install:append() {
     rm -rf ${D}/usr/include/gsthailometa
     rm -rf ${D}/usr/lib/pkgconfig/gsthailometa.pc
     rm -rf ${D}/usr/lib/libhailo_tracker*
+    rm -rf ${D}/${libdir}/libhailo_opencv_utils.so*
 
     install -m 0755 ${WORKDIR}/git/scripts/platforms/astrial/enable_imx8_csi.sh ${ROOTFS_APPS_DIR}/
 
